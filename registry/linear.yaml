@@ -1,0 +1,12 @@
+name: linear
+displayName: Linear
+description: Linear API — issues, projects, teams, cycles, and workflows
+specUrl: https://linear.app/docs/openapi.json
+baseUrl: https://api.linear.app
+authType: bearer
+authEnvVar: LINEAR_API_KEY
+tags:
+  - project-management
+  - issues
+  - devtools
+  - agile

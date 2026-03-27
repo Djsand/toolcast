@@ -1,0 +1,10 @@
+name: petstore
+displayName: Petstore (Demo)
+description: Swagger Petstore — demo API for testing mcpgen
+specUrl: https://petstore3.swagger.io/api/v3/openapi.json
+baseUrl: https://petstore3.swagger.io/api/v3
+authType: none
+tags:
+  - demo
+  - testing
+  - example

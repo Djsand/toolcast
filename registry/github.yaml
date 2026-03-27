@@ -1,0 +1,12 @@
+name: github
+displayName: GitHub
+description: GitHub REST API — repos, issues, PRs, actions, users, and more
+specUrl: https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json
+baseUrl: https://api.github.com
+authType: bearer
+authEnvVar: GITHUB_TOKEN
+tags:
+  - git
+  - vcs
+  - devtools
+  - ci-cd

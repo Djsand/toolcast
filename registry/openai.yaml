@@ -1,0 +1,12 @@
+name: openai
+displayName: OpenAI
+description: OpenAI API — chat completions, embeddings, images, audio, and fine-tuning
+specUrl: https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+baseUrl: https://api.openai.com/v1
+authType: bearer
+authEnvVar: OPENAI_API_KEY
+tags:
+  - ai
+  - llm
+  - ml
+  - embeddings

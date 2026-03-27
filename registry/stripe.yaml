@@ -1,0 +1,12 @@
+name: stripe
+displayName: Stripe
+description: Stripe API — payments, subscriptions, invoices, customers, and billing
+specUrl: https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json
+baseUrl: https://api.stripe.com
+authType: bearer
+authEnvVar: STRIPE_SECRET_KEY
+tags:
+  - payments
+  - billing
+  - fintech
+  - subscriptions

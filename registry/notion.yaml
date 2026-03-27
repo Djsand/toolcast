@@ -1,0 +1,12 @@
+name: notion
+displayName: Notion
+description: Notion API — pages, databases, blocks, users, and search
+specUrl: https://developers.notion.com/openapi.json
+baseUrl: https://api.notion.com/v1
+authType: bearer
+authEnvVar: NOTION_API_KEY
+tags:
+  - productivity
+  - wiki
+  - database
+  - notes

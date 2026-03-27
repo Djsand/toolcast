@@ -1,0 +1,12 @@
+name: slack
+displayName: Slack
+description: Slack Web API — messages, channels, users, files, and reactions
+specUrl: https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json
+baseUrl: https://slack.com/api
+authType: bearer
+authEnvVar: SLACK_TOKEN
+tags:
+  - messaging
+  - chat
+  - communication
+  - team
