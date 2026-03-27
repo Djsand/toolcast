@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <img src="demo.gif" alt="toolcast demo" width="800" />
+</p>
+
+<p align="center">
   <a href="#quick-start">Quick Start</a> &bull;
   <a href="#registry">Registry</a> &bull;
   <a href="#how-it-works">How It Works</a> &bull;
