@@ -10,7 +10,7 @@ import { getRegistryEntry, listRegistry, searchRegistry } from "./registry/index
 const program = new Command();
 
 program
-  .name("anyapi")
+  .name("toolcast")
   .description("Turn any API into an AI agent tool. Point at an OpenAPI spec → get a working MCP server.")
   .version("0.1.0");
 
@@ -50,7 +50,7 @@ program
     for (const entry of entries) {
       console.log(`  \x1b[36m${entry.name.padEnd(20)}\x1b[0m ${entry.description}`);
     }
-    console.log(`\n  Run \x1b[33manyapi add <name>\x1b[0m to configure one.\n`);
+    console.log(`\n  Run \x1b[33mtoolcast add <name>\x1b[0m to configure one.\n`);
   });
 
 program
@@ -78,7 +78,7 @@ program
   .action(async (name: string, options: { config: string }) => {
     const entry = await getRegistryEntry(name);
     if (!entry) {
-      console.error(`\x1b[31m✗\x1b[0m API "${name}" not found in registry. Run \x1b[33manyapi list\x1b[0m to see available APIs.`);
+      console.error(`\x1b[31m✗\x1b[0m API "${name}" not found in registry. Run \x1b[33mtoolcast list\x1b[0m to see available APIs.`);
       process.exit(1);
     }
 
@@ -92,9 +92,9 @@ program
     }
 
     const mcpServers = (config.mcpServers ?? {}) as Record<string, unknown>;
-    mcpServers[`anyapi-${entry.name}`] = {
+    mcpServers[`toolcast-${entry.name}`] = {
       command: "npx",
-      args: ["anyapi", "serve", entry.specUrl, "--base-url", entry.baseUrl],
+      args: ["toolcast", "serve", entry.specUrl, "--base-url", entry.baseUrl],
       env: entry.authEnvVar ? { [entry.authEnvVar]: `<your-${entry.name}-api-key>` } : undefined,
     };
     config.mcpServers = mcpServers;

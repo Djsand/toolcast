@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">anyapi</h1>
+  <h1 align="center">toolcast</h1>
   <p align="center">
     <strong>Turn any API into an AI agent tool. One command.</strong>
   </p>
@@ -28,13 +28,13 @@ You want your AI agent to call an API. Today you have to:
 3. Test it, debug it, deploy it
 4. Repeat for every new API
 
-**anyapi does all of this in one command.**
+**toolcast does all of this in one command.**
 
 ## Quick Start
 
 ```bash
 # Try it right now with the demo Petstore API (no auth needed)
-npx anyapi serve https://petstore3.swagger.io/api/v3/openapi.json
+npx toolcast serve https://petstore3.swagger.io/api/v3/openapi.json
 ```
 
 That's it. Your AI agent now has 19 tools for managing pets, orders, and users.
@@ -43,17 +43,17 @@ That's it. Your AI agent now has 19 tools for managing pets, orders, and users.
 
 ```bash
 # Add Stripe to your Claude Code config
-npx anyapi add stripe
+npx toolcast add stripe
 
 # Or point at any OpenAPI spec
-npx anyapi serve https://api.example.com/openapi.json --bearer-token $MY_TOKEN
+npx toolcast serve https://api.example.com/openapi.json --bearer-token $MY_TOKEN
 ```
 
 ### Inspect before serving
 
 ```bash
 # See what tools would be generated
-npx anyapi inspect https://petstore3.swagger.io/api/v3/openapi.json
+npx toolcast inspect https://petstore3.swagger.io/api/v3/openapi.json
 ```
 
 ```
@@ -73,24 +73,24 @@ npx anyapi inspect https://petstore3.swagger.io/api/v3/openapi.json
 
 ## Registry
 
-anyapi ships with pre-built configs for popular APIs. One command to add them:
+toolcast ships with pre-built configs for popular APIs. One command to add them:
 
 | API | Command | What You Get |
 |-----|---------|-------------|
-| **GitHub** | `anyapi add github` | Repos, issues, PRs, actions, users |
-| **Stripe** | `anyapi add stripe` | Payments, subscriptions, invoices |
-| **Slack** | `anyapi add slack` | Messages, channels, users, reactions |
-| **Notion** | `anyapi add notion` | Pages, databases, blocks, search |
-| **Linear** | `anyapi add linear` | Issues, projects, teams, cycles |
-| **OpenAI** | `anyapi add openai` | Completions, embeddings, images |
-| **Petstore** | `anyapi add petstore` | Demo API for testing |
+| **GitHub** | `toolcast add github` | Repos, issues, PRs, actions, users |
+| **Stripe** | `toolcast add stripe` | Payments, subscriptions, invoices |
+| **Slack** | `toolcast add slack` | Messages, channels, users, reactions |
+| **Notion** | `toolcast add notion` | Pages, databases, blocks, search |
+| **Linear** | `toolcast add linear` | Issues, projects, teams, cycles |
+| **OpenAI** | `toolcast add openai` | Completions, embeddings, images |
+| **Petstore** | `toolcast add petstore` | Demo API for testing |
 
 ```bash
 # List all available APIs
-anyapi list
+toolcast list
 
 # Search by keyword
-anyapi search payments
+toolcast search payments
 ```
 
 **Want to add an API?** See [Contributing](#contributing).
@@ -99,7 +99,7 @@ anyapi search payments
 
 ```
                     +-----------------+
-  OpenAPI Spec ---> |     anyapi      | ---> MCP Server (stdio)
+  OpenAPI Spec ---> |     toolcast      | ---> MCP Server (stdio)
   (URL or file)     |                 |      ready for Claude Code,
                     | 1. Parse spec   |      Cursor, or any MCP client
                     | 2. Build tools  |
@@ -128,7 +128,7 @@ Add to your `.mcp.json`:
   "mcpServers": {
     "my-api": {
       "command": "npx",
-      "args": ["anyapi", "serve", "https://api.example.com/openapi.json"],
+      "args": ["toolcast", "serve", "https://api.example.com/openapi.json"],
       "env": {
         "API_TOKEN": "your-token-here"
       }
@@ -140,20 +140,20 @@ Add to your `.mcp.json`:
 Or use the `add` command to auto-configure:
 
 ```bash
-anyapi add github
+toolcast add github
 # Adds to .mcp.json automatically
 ```
 
 ### Use with a local spec file
 
 ```bash
-anyapi serve ./my-api-spec.yaml --base-url https://localhost:3000
+toolcast serve ./my-api-spec.yaml --base-url https://localhost:3000
 ```
 
 ### Use programmatically
 
 ```typescript
-import { parseSpec, createMcpServer } from "anyapi";
+import { parseSpec, createMcpServer } from "toolcast";
 
 const spec = await parseSpec("https://api.example.com/openapi.json");
 const server = createMcpServer(spec, {
@@ -164,7 +164,7 @@ const server = createMcpServer(spec, {
 
 ## Auth
 
-anyapi supports three auth methods, auto-detected from the OpenAPI spec:
+toolcast supports three auth methods, auto-detected from the OpenAPI spec:
 
 | Method | Env Variables | Flag |
 |--------|--------------|------|
@@ -177,20 +177,20 @@ Registry entries specify which env var to use (e.g., `GITHUB_TOKEN` for GitHub).
 ## CLI Reference
 
 ```
-anyapi serve <spec>       Start MCP server from OpenAPI spec
+toolcast serve <spec>       Start MCP server from OpenAPI spec
   --base-url <url>        Override base URL
   --api-key <key>         API key auth
   --bearer-token <token>  Bearer token auth
 
-anyapi inspect <spec>     Preview tools without starting server
+toolcast inspect <spec>     Preview tools without starting server
 
-anyapi add <name>         Add registry API to .mcp.json
+toolcast add <name>         Add registry API to .mcp.json
   --config <path>         Config file path (default: .mcp.json)
 
-anyapi list               List all registry APIs
-anyapi search <query>     Search registry
-anyapi --version          Show version
-anyapi --help             Show help
+toolcast list               List all registry APIs
+toolcast search <query>     Search registry
+toolcast --version          Show version
+toolcast --help             Show help
 ```
 
 ## Contributing
@@ -217,8 +217,8 @@ tags:
 ### Development
 
 ```bash
-git clone https://github.com/your-username/anyapi.git
-cd anyapi
+git clone https://github.com/your-username/toolcast.git
+cd toolcast
 npm install
 npm run build
 npm test

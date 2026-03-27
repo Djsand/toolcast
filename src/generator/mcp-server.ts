@@ -20,7 +20,7 @@ export function createServer(
 ): { server: Server; tools: readonly ToolDefinition[] } {
   const server = new Server(
     {
-      name: `anyapi-${spec.title.toLowerCase().replace(/\s+/g, "-")}`,
+      name: `toolcast-${spec.title.toLowerCase().replace(/\s+/g, "-")}`,
       version: spec.version,
     },
     { capabilities: { tools: {} } },
@@ -98,7 +98,7 @@ async function executeRequest(
 
   let headers: Record<string, string> = {
     "Accept": "application/json",
-    "User-Agent": "anyapi/0.1.0",
+    "User-Agent": "toolcast/0.1.0",
   };
 
   for (const param of endpoint.parameters.filter((p) => p.in === "header")) {

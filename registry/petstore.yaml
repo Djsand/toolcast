@@ -1,6 +1,6 @@
 name: petstore
 displayName: Petstore (Demo)
-description: Swagger Petstore — demo API for testing anyapi
+description: Swagger Petstore — demo API for testing toolcast
 specUrl: https://petstore3.swagger.io/api/v3/openapi.json
 baseUrl: https://petstore3.swagger.io/api/v3
 authType: none
