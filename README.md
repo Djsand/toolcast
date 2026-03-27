@@ -1,6 +1,11 @@
 <p align="center">
   <h1 align="center">toolcast</h1>
   <p align="center">
+    <a href="https://www.npmjs.com/package/toolcast"><img src="https://img.shields.io/npm/v/toolcast?color=blue" alt="npm version" /></a>
+    <a href="https://github.com/Djsand/toolcast/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" /></a>
+    <a href="https://github.com/Djsand/toolcast"><img src="https://img.shields.io/github/stars/Djsand/toolcast?style=social" alt="GitHub stars" /></a>
+  </p>
+  <p align="center">
     <strong>Turn any API into an AI agent tool. One command.</strong>
   </p>
   <p align="center">
