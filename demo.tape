@@ -1,12 +1,14 @@
 Output demo.gif
 
-Set Shell "zsh"
+Set Shell "bash"
 Set FontSize 16
 Set Width 900
 Set Height 500
 Set Theme "Catppuccin Mocha"
 Set Padding 20
 Set TypingSpeed 40ms
+
+Sleep 500ms
 
 Type "# Turn any API into an AI agent tool"
 Enter
