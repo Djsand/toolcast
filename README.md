@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">mcpgen</h1>
+  <h1 align="center">anyapi</h1>
   <p align="center">
     <strong>Turn any API into an AI agent tool. One command.</strong>
   </p>
@@ -28,13 +28,13 @@ You want your AI agent to call an API. Today you have to:
 3. Test it, debug it, deploy it
 4. Repeat for every new API
 
-**mcpgen does all of this in one command.**
+**anyapi does all of this in one command.**
 
 ## Quick Start
 
 ```bash
 # Try it right now with the demo Petstore API (no auth needed)
-npx mcpgen serve https://petstore3.swagger.io/api/v3/openapi.json
+npx anyapi serve https://petstore3.swagger.io/api/v3/openapi.json
 ```
 
 That's it. Your AI agent now has 19 tools for managing pets, orders, and users.
@@ -43,17 +43,17 @@ That's it. Your AI agent now has 19 tools for managing pets, orders, and users.
 
 ```bash
 # Add Stripe to your Claude Code config
-npx mcpgen add stripe
+npx anyapi add stripe
 
 # Or point at any OpenAPI spec
-npx mcpgen serve https://api.example.com/openapi.json --bearer-token $MY_TOKEN
+npx anyapi serve https://api.example.com/openapi.json --bearer-token $MY_TOKEN
 ```
 
 ### Inspect before serving
 
 ```bash
 # See what tools would be generated
-npx mcpgen inspect https://petstore3.swagger.io/api/v3/openapi.json
+npx anyapi inspect https://petstore3.swagger.io/api/v3/openapi.json
 ```
 
 ```
@@ -73,24 +73,24 @@ npx mcpgen inspect https://petstore3.swagger.io/api/v3/openapi.json
 
 ## Registry
 
-mcpgen ships with pre-built configs for popular APIs. One command to add them:
+anyapi ships with pre-built configs for popular APIs. One command to add them:
 
 | API | Command | What You Get |
 |-----|---------|-------------|
-| **GitHub** | `mcpgen add github` | Repos, issues, PRs, actions, users |
-| **Stripe** | `mcpgen add stripe` | Payments, subscriptions, invoices |
-| **Slack** | `mcpgen add slack` | Messages, channels, users, reactions |
-| **Notion** | `mcpgen add notion` | Pages, databases, blocks, search |
-| **Linear** | `mcpgen add linear` | Issues, projects, teams, cycles |
-| **OpenAI** | `mcpgen add openai` | Completions, embeddings, images |
-| **Petstore** | `mcpgen add petstore` | Demo API for testing |
+| **GitHub** | `anyapi add github` | Repos, issues, PRs, actions, users |
+| **Stripe** | `anyapi add stripe` | Payments, subscriptions, invoices |
+| **Slack** | `anyapi add slack` | Messages, channels, users, reactions |
+| **Notion** | `anyapi add notion` | Pages, databases, blocks, search |
+| **Linear** | `anyapi add linear` | Issues, projects, teams, cycles |
+| **OpenAI** | `anyapi add openai` | Completions, embeddings, images |
+| **Petstore** | `anyapi add petstore` | Demo API for testing |
 
 ```bash
 # List all available APIs
-mcpgen list
+anyapi list
 
 # Search by keyword
-mcpgen search payments
+anyapi search payments
 ```
 
 **Want to add an API?** See [Contributing](#contributing).
@@ -99,7 +99,7 @@ mcpgen search payments
 
 ```
                     +-----------------+
-  OpenAPI Spec ---> |     mcpgen      | ---> MCP Server (stdio)
+  OpenAPI Spec ---> |     anyapi      | ---> MCP Server (stdio)
   (URL or file)     |                 |      ready for Claude Code,
                     | 1. Parse spec   |      Cursor, or any MCP client
                     | 2. Build tools  |
@@ -128,7 +128,7 @@ Add to your `.mcp.json`:
   "mcpServers": {
     "my-api": {
       "command": "npx",
-      "args": ["mcpgen", "serve", "https://api.example.com/openapi.json"],
+      "args": ["anyapi", "serve", "https://api.example.com/openapi.json"],
       "env": {
         "API_TOKEN": "your-token-here"
       }
@@ -140,20 +140,20 @@ Add to your `.mcp.json`:
 Or use the `add` command to auto-configure:
 
 ```bash
-mcpgen add github
+anyapi add github
 # Adds to .mcp.json automatically
 ```
 
 ### Use with a local spec file
 
 ```bash
-mcpgen serve ./my-api-spec.yaml --base-url https://localhost:3000
+anyapi serve ./my-api-spec.yaml --base-url https://localhost:3000
 ```
 
 ### Use programmatically
 
 ```typescript
-import { parseSpec, createMcpServer } from "mcpgen";
+import { parseSpec, createMcpServer } from "anyapi";
 
 const spec = await parseSpec("https://api.example.com/openapi.json");
 const server = createMcpServer(spec, {
@@ -164,7 +164,7 @@ const server = createMcpServer(spec, {
 
 ## Auth
 
-mcpgen supports three auth methods, auto-detected from the OpenAPI spec:
+anyapi supports three auth methods, auto-detected from the OpenAPI spec:
 
 | Method | Env Variables | Flag |
 |--------|--------------|------|
@@ -177,20 +177,20 @@ Registry entries specify which env var to use (e.g., `GITHUB_TOKEN` for GitHub).
 ## CLI Reference
 
 ```
-mcpgen serve <spec>       Start MCP server from OpenAPI spec
+anyapi serve <spec>       Start MCP server from OpenAPI spec
   --base-url <url>        Override base URL
   --api-key <key>         API key auth
   --bearer-token <token>  Bearer token auth
 
-mcpgen inspect <spec>     Preview tools without starting server
+anyapi inspect <spec>     Preview tools without starting server
 
-mcpgen add <name>         Add registry API to .mcp.json
+anyapi add <name>         Add registry API to .mcp.json
   --config <path>         Config file path (default: .mcp.json)
 
-mcpgen list               List all registry APIs
-mcpgen search <query>     Search registry
-mcpgen --version          Show version
-mcpgen --help             Show help
+anyapi list               List all registry APIs
+anyapi search <query>     Search registry
+anyapi --version          Show version
+anyapi --help             Show help
 ```
 
 ## Contributing
@@ -217,8 +217,8 @@ tags:
 ### Development
 
 ```bash
-git clone https://github.com/your-username/mcpgen.git
-cd mcpgen
+git clone https://github.com/your-username/anyapi.git
+cd anyapi
 npm install
 npm run build
 npm test
