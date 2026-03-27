@@ -1,10 +1,10 @@
 {
   "name": "toolcast",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Turn any API into an AI agent tool. Point at an OpenAPI spec → get a working MCP server in 10 seconds.",
   "type": "module",
   "bin": {
-    "toolcast": "./dist/cli.js"
+    "toolcast": "dist/cli.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
