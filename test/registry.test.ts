@@ -10,6 +10,7 @@ describe("Registry", () => {
     expect(names).toContain("github");
     expect(names).toContain("stripe");
     expect(names).toContain("petstore");
+    expect(names).toContain("xquik");
   });
 
   it("each entry has required fields", async () => {
@@ -53,6 +54,14 @@ describe("Registry", () => {
     expect(entry).toBeDefined();
     expect(entry!.displayName).toBe("Petstore (Demo)");
     expect(entry!.authType).toBe("none");
+  });
+
+  it("gets Xquik API key auth metadata", async () => {
+    const entry = await getRegistryEntry("xquik");
+    expect(entry).toBeDefined();
+    expect(entry!.authType).toBe("apiKey");
+    expect(entry!.authEnvVar).toBe("X_API_KEY");
+    expect(entry!.authHeaderName).toBe("x-api-key");
   });
 
   it("returns undefined for missing entry", async () => {

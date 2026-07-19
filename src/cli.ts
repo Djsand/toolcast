@@ -24,8 +24,13 @@ program
   .action(async (specSource: string, options: { baseUrl?: string; apiKey?: string; bearerToken?: string }) => {
     const spec = await parseSpec(specSource);
 
+    const apiKeyScheme = spec.securitySchemes.find((scheme) => scheme.type === "apiKey");
     const auth = options.apiKey
-      ? { type: "apiKey" as const, value: options.apiKey, headerName: "Authorization" }
+      ? {
+          type: "apiKey" as const,
+          value: options.apiKey,
+          headerName: apiKeyScheme?.parameterName ?? apiKeyScheme?.name ?? "X-API-Key",
+        }
       : options.bearerToken
         ? { type: "bearer" as const, value: options.bearerToken }
         : undefined;

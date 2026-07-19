@@ -1,0 +1,13 @@
+name: xquik
+displayName: Xquik
+description: X automation API for search, extraction, compose, events, monitors, and webhooks
+specUrl: https://xquik.com/openapi.json
+baseUrl: https://xquik.com
+authType: apiKey
+authEnvVar: X_API_KEY
+authHeaderName: x-api-key
+tags:
+  - social
+  - automation
+  - extraction
+  - webhooks

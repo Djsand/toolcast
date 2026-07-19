@@ -35,6 +35,7 @@ export interface ParsedEndpoint {
 
 export interface ParsedSecurityScheme {
   readonly name: string;
+  readonly parameterName?: string;
   readonly type: "apiKey" | "http" | "oauth2" | "openIdConnect";
   readonly in?: "query" | "header" | "cookie";
   readonly scheme?: string;

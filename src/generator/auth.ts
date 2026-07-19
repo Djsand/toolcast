@@ -27,8 +27,9 @@ export function resolveAuth(
   }
 
   if (scheme.type === "apiKey") {
-    const headerName = scheme.in === "header" ? scheme.name : "X-API-Key";
-    const value = env.API_KEY ?? env[`${scheme.name.toUpperCase().replace(/-/g, "_")}`];
+    const parameterName = scheme.parameterName ?? scheme.name;
+    const headerName = scheme.in === "header" ? parameterName : "X-API-Key";
+    const value = env.API_KEY ?? env[parameterName.toUpperCase().replace(/-/g, "_")];
     return { type: "apiKey", value, headerName };
   }
 
