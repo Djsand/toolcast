@@ -89,6 +89,7 @@ describe("OpenAPI Parser", () => {
     const apiKey = spec.securitySchemes.find((s) => s.name === "apiKey")!;
     expect(apiKey.type).toBe("apiKey");
     expect(apiKey.in).toBe("header");
+    expect(apiKey.parameterName).toBe("X-Api-Key");
   });
 
   it("parses responses", async () => {

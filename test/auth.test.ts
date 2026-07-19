@@ -20,9 +20,15 @@ describe("Auth", () => {
 
     it("resolves API key from env", () => {
       const schemes: ParsedSecurityScheme[] = [
-        { name: "X-Api-Key", type: "apiKey", in: "header", description: "" },
+        {
+          name: "apiKey",
+          parameterName: "X-Api-Key",
+          type: "apiKey",
+          in: "header",
+          description: "",
+        },
       ];
-      const result = resolveAuth(schemes, { API_KEY: "my-key" });
+      const result = resolveAuth(schemes, { X_API_KEY: "my-key" });
       expect(result.type).toBe("apiKey");
       expect(result.value).toBe("my-key");
       expect(result.headerName).toBe("X-Api-Key");

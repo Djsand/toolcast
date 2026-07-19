@@ -68,6 +68,7 @@ function extractSecuritySchemes(raw: OpenAPISpec): readonly ParsedSecurityScheme
 
   return Object.entries(schemes).map(([name, scheme]) => ({
     name,
+    parameterName: typeof scheme.name === "string" ? scheme.name : undefined,
     type: scheme.type as ParsedSecurityScheme["type"],
     in: scheme.in as ParsedSecurityScheme["in"],
     scheme: scheme.scheme as string | undefined,
